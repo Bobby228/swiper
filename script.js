@@ -1,46 +1,39 @@
-// let swiper;
-// if (window.innerWidth < 768) {
-//   const swiper = new Swiper(".swiper", {
-//     // Optional parameters
-//     direction: "horizontal",
-//     slidesPerView: "auto",
-//     spaceBetween: 16,
+let swiper;
 
-//     // If we need pagination
-//     pagination: {
-//       el: ".swiper-pagination",
-//       clickable: true,
-//     },
-//   });
-// } else {
-//   swiper.destroy(true, true);
-// }
-
-let swiper; // объявляем переменную в общей области видимости
-
-function initSwiper() {
+let checkoutWidowSize = function () {
   if (window.innerWidth < 768) {
-    if (!swiper) {
-      swiper = new Swiper(".swiper", {
-        direction: "horizontal",
-        slidesPerView: "auto",
-        spaceBetween: 16,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
-    }
-  } else {
-    if (swiper) {
-      swiper.destroy();
+    return true;
+  }
+  return false;
+};
+
+let init = function () {
+  if (swiper) {
+    swiper.destroy();
+    let paginationEl = document.querySelector(".swiper-pagination");
+    if (paginationEl) {
+      paginationEl.innerHTML = "";
     }
   }
-}
 
-// Запускаем при загрузке и при изменении размера окна
-window.addEventListener("load", initSwiper);
-window.addEventListener("resize", initSwiper);
+  if (checkoutWidowSize()) {
+    swiper = new Swiper(".swiper", {
+      direction: "horizontal",
+      slidesPerView: "auto",
+      spaceBetween: 16,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  }
+};
+
+window.addEventListener("resize", function () {
+  init();
+});
+
+init();
 
 let showMore = document.querySelector(".show-more");
 let text = showMore.querySelector("p");

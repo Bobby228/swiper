@@ -141,27 +141,6 @@ body {
   transform: rotate(180deg);
 }
 
-/* .brands {
+.d-n {
   display: none;
 }
-
-.brands-wrapper {
-  background-color: #f8f8f8;
-  padding: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 16px;
-  row-gap: 16px;
-}
-
-.brands-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 240px;
-  height: 72px;
-  padding: 16px;
-  background-color: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 5px;
-} */
